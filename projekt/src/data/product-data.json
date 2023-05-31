@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "name": "McRoyal",
+        "category": "Burger",
+        "image": "https://cdn.mcdonalds.pl/uploads/20220922160425/mcroyal.png",
+        "description": "McRoyal to klasyczny burger z wołowiny, serem cheddar, cebulą, ogórkiem, sałatą i sosem majonezowym. Wszystko to w chrupiącej bułce z sezamem.",
+        "price": "9.99"
+    },
+    {
+        "id": 2,
+        "name": "McChicken",
+        "category": "Burger",
+        "image": "https://cdn.mcdonalds.pl/uploads/20221109152407/mcchiken.png",
+        "description": "McChicken to klasyczny burger z kurczakiem, sałatą, sosem majonezowym i chrupiącą panierką. Wszystko to w chrupiącej bułce z sezamem.",
+        "price": "7.69"
+    },
+    {
+        "id": 3,
+        "name": "McDouble",
+        "category": "Burger",
+        "image": "https://cdn.mcdonalds.pl/uploads/20200602192719/mcdouble.png",
+        "description": "McDouble to klasyczny burger z dwiema porcjami wołowiny, serem cheddar, cebulą, ogórkiem, sałatą i sosem majonezowym. Wszystko to w chrupiącej bułce z sezamem.",
+        "price": "8.99"
+    },
+    {
+        "id": 4,
+        "name": "McWrap",
+        "category": "Wrap",
+        "image": "https://cdn.mcdonalds.pl/uploads/20221221160642/350367-mcwrap-2022-na-www-1090x664px-8-mcwrap-bekon-deluxe.png",
+        "description": "McWrap to pyszny i pożywny posiłek, który możesz zjeść w domu, w pracy lub w drodze. McWrap to chrupiąca tortilla z sałatą, pomidorem, ogórkiem, cebulą, serem cheddar i sosem majonezowym. W środku znajdziesz porcję kurczaka lub wołowiny.",
+        "price": "7.95"
+    }
+
+]
