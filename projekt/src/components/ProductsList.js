@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useMemo } from 'react';
 import { useProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
 
@@ -6,6 +6,7 @@ const ProductsList = () => {
   const { products } = useProductContext();
   const [visibleDescriptionId, setVisibleDescriptionId] = useState(null);
   const { addToCart } = useContext(CartContext);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleAddToCart = (product) => {
     addToCart(product);
@@ -19,10 +20,28 @@ const ProductsList = () => {
     }
   };
 
+  const filteredProducts = useMemo(() => {
+    const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    return products.filter((product) => {
+      const { name } = product;
+
+      return (
+        name.toLowerCase().includes(lowerCaseSearchTerm)
+      );
+    });
+  }, [products, searchTerm]);
+
 
   return (
     <div>
-      {products.map((product) => (
+        
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Szukaj..."
+      />
+      {filteredProducts.map((product) => (
         <div key={product.id}>
           <img className="product-image" src={product.image} alt={product.name} />
           <h3>{product.name}</h3>
