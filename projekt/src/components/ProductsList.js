@@ -1,60 +1,91 @@
-import React, { useState, useContext, useMemo } from 'react';
+import React, { useState, useContext, useMemo, useRef } from 'react';
 import { useProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
 
 const ProductsList = () => {
   const { products } = useProductContext();
-  const [visibleDescriptionId, setVisibleDescriptionId] = useState(null);
   const { addToCart } = useContext(CartContext);
   const [searchTerm, setSearchTerm] = useState('');
+  const itemRefs = useRef([]);
+
+  const handleItemClick = (index) => {
+    setIsAnimating((prevState) => {
+      const updatedState = [...prevState];
+      updatedState[index] = true;
+      return updatedState;
+    });
+
+    setTimeout(() => {
+      setIsAnimating((prevState) => {
+        const updatedState = [...prevState];
+        updatedState[index] = false;
+        return updatedState;
+      });
+    }, 1000);
+  };
 
   const handleAddToCart = (product) => {
     addToCart(product);
   };
 
   const toggleDescription = (id) => {
-    if (visibleDescriptionId === id) {
-      setVisibleDescriptionId(null);
-    } else {
-      setVisibleDescriptionId(id);
-    }
+    setVisibleItemId((prevId) => (prevId === id ? null : id));
   };
 
   const filteredProducts = useMemo(() => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    return products.filter((product) => {
-      const { name } = product;
-
-      return (
-        name.toLowerCase().includes(lowerCaseSearchTerm)
-      );
-    });
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(lowerCaseSearchTerm)
+    );
   }, [products, searchTerm]);
 
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const [isAnimating, setIsAnimating] = useState(
+    Array(filteredProducts.length).fill(false)
+  );
+  const [visibleItemId, setVisibleItemId] = useState(null);
 
   return (
     <div>
-        
+      <div className='input-container'>
       <input
+        className="input-field"
         type="text"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleInputChange}
         placeholder="Szukaj..."
       />
-      {filteredProducts.map((product) => (
-        <div key={product.id}>
-          <img className="product-image" src={product.image} alt={product.name} />
-          <h3>{product.name}</h3>
-          <p>Price: {product.price}</p>
-          {visibleDescriptionId === product.id && <p>{product.description}</p>}
-          <button onClick={() => toggleDescription(product.id)}>
-            {visibleDescriptionId === product.id ? 'Hide description' : 'Show description'}
-          </button>
-          <p>Category: {product.category}</p>
+      </div>
+      <div className="product-container">
+  {filteredProducts.map((product, index) => (
+    <div key={product.id} className="product-item">
+      <img className="product-image" src={product.image} alt={product.name} />
+      <h3 className={isAnimating[index] ? 'bouncing' : ''}>{product.name}</h3>
+      <p>Price: {product.price}</p>
+      {visibleItemId === product.id && <p>{product.description}</p>}
+      <button onClick={() => toggleDescription(product.id)}>
+        {visibleItemId === product.id ? 'Hide description' : 'Show description'}
+      </button>
+      <p>Category: {product.category}</p>
+      <button
+        ref={(ref) => (itemRefs.current[index] = ref)}
+        onClick={() => {
+          handleAddToCart(product);
+          handleItemClick(index);
+        }}
+      >
+        Dodaj do koszyka
+      </button>
+    </div>
+  ))}
+</div>
 
-          <button onClick={() => handleAddToCart(product)}>Dodaj do koszyka</button>
-        </div>
-      ))}
+
+    
+
     </div>
   );
 };

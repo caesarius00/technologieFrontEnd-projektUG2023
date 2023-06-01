@@ -7,10 +7,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import DarkMode from './components/DarkMode';
 import Cart from './components/Cart';
 import ProductsList from './components/ProductsList';
+import ProductsPage from './components/ProductsPage';
 
 const Home = () => (
   <div>
-    <Link class to="/summary">Podsumowanie zamówienia</Link>
     <DarkMode />
     <MainPage />
 </div>
@@ -18,9 +18,8 @@ const Home = () => (
 
 const Products = () => (
   <div>
-    <Link class to="/summary">Podsumowanie zamówienia</Link>
     <DarkMode />
-    <ProductsList />
+    <ProductsPage />
   </div>
 );
 
