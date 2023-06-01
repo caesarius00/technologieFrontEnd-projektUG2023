@@ -59,11 +59,11 @@ const ProductsList = () => {
         placeholder="Szukaj..."
       />
       </div>
-      <div className="product-container">
-  {filteredProducts.map((product, index) => (
-    <div key={product.id} className="product-item">
+      <div className="product-container" >
+  {filteredProducts.map((product, number) => (
+    <div key={product.id} className={isAnimating[number] ? 'bouncing product-item' : 'product-item'}>
       <img className="product-image" src={product.image} alt={product.name} />
-      <h3 className={isAnimating[index] ? 'bouncing' : ''}>{product.name}</h3>
+      <h3>{product.name}</h3>
       <p>Price: {product.price}</p>
       {visibleItemId === product.id && <p>{product.description}</p>}
       <button onClick={() => toggleDescription(product.id)}>
@@ -71,10 +71,10 @@ const ProductsList = () => {
       </button>
       <p>Category: {product.category}</p>
       <button
-        ref={(ref) => (itemRefs.current[index] = ref)}
+        ref={(ref) => (itemRefs.current[product] = ref)}
         onClick={() => {
           handleAddToCart(product);
-          handleItemClick(index);
+          handleItemClick(number);
         }}
       >
         Dodaj do koszyka

@@ -12,19 +12,19 @@ const Cart = () => {
   }, [cartItems]);
 
 
-  return (
+  return ( 
     <div>
-
+ {console.log(cartItems)} 
       {cartItems.length === 0 ? (
         <div>
         <h2>Koszyk</h2>
           <p>Brak produktów w koszyku!</p>
-          <Link to="/products">Złóż zamówienie tu</Link>
+          <Link to="/products"><button>Złóż zamówienie tu</button></Link>
         </div>
       ) : (
         <div>
         
-        <Link to="/products">Wróć do składania zamówienia</Link><br />
+        <Link to="/products"><button>Wróć do składania zamówienia</button></Link><br />
       <h2>Koszyk ({cartItems.length})</h2>
       <p>Suma: {countTotal} zł</p>
         <button onClick={emptyCart}>Wyczyść koszyk</button>
@@ -34,7 +34,7 @@ const Cart = () => {
       <ul>
         {cartItems.map((item, number) => (
           <li key={number}>
-            {item.name} - {item.price} zł - {item.quantity} szt.
+            {item.name} - {item.price} zł
             <button onClick={() => removeItem(number)}>Usuń</button>
           </li>
         ))}
