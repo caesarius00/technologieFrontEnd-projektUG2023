@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const ProductsPage = () => {
     return (
         <div>
-            <Link to="/summary"> <button> Podsumowanie zamówienia</button></Link>
+            <Link id="order-summary-button" to="/summary"> <button> Przejdź do<br/>podsumowania</button></Link>
             <TimeCounting />
             <ProductsList />
         </div>

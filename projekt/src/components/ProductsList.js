@@ -1,11 +1,13 @@
 import React, { useState, useContext, useMemo, useRef } from 'react';
 import { useProductContext } from '../contexts/ProductContext';
 import { CartContext } from '../contexts/CartContext';
+import Categories from './Categories';
 
 const ProductsList = () => {
   const { products } = useProductContext();
   const { addToCart } = useContext(CartContext);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const itemRefs = useRef([]);
 
   const handleItemClick = (index) => {
@@ -27,17 +29,33 @@ const ProductsList = () => {
   const handleAddToCart = (product) => {
     addToCart(product);
   };
+  
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
 
   const toggleDescription = (id) => {
     setVisibleItemId((prevId) => (prevId === id ? null : id));
   };
 
+  // const filteredProducts = useMemo(() => {
+  //   const lowerCaseSearchTerm = searchTerm.toLowerCase();
+  //   return products.filter((product) =>
+  //     product.name.toLowerCase().includes(lowerCaseSearchTerm)
+  //   );
+  // }, [products, searchTerm]);
+
   const filteredProducts = useMemo(() => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    return products.filter((product) =>
-      product.name.toLowerCase().includes(lowerCaseSearchTerm)
-    );
-  }, [products, searchTerm]);
+    return products.filter((product) => {
+      const { name, category } = product;
+      return (
+        name.toLowerCase().includes(lowerCaseSearchTerm) &&
+        (!selectedCategory || category === selectedCategory)
+      );
+    });
+  }, [products, searchTerm, selectedCategory]);
+
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
@@ -50,6 +68,7 @@ const ProductsList = () => {
 
   return (
     <div>
+      <Categories selectedCategory={selectedCategory} onCategorySelect={handleCategorySelect} />
       <div className='input-container'>
       <input
         className="input-field"
