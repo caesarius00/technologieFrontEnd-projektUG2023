@@ -1,44 +1,266 @@
 [
     {
         "id": 1,
-        "name": "McRoyal",
-        "category": "Burger",
-        "image": "https://cdn.mcdonalds.pl/uploads/20220922160425/mcroyal.png",
-        "description": "McRoyal to klasyczny burger z wołowiny, serem cheddar, cebulą, ogórkiem, sałatą i sosem majonezowym. Wszystko to w chrupiącej bułce z sezamem.",
-        "price": "9.99"
-    },
-    {
-        "id": 2,
-        "name": "McChicken",
-        "category": "Burger",
-        "image": "https://cdn.mcdonalds.pl/uploads/20221109152407/mcchiken.png",
-        "description": "McChicken to klasyczny burger z kurczakiem, sałatą, sosem majonezowym i chrupiącą panierką. Wszystko to w chrupiącej bułce z sezamem.",
-        "price": "7.69"
-    },
-    {
-        "id": 3,
-        "name": "McDouble",
-        "category": "Burger",
-        "image": "https://cdn.mcdonalds.pl/uploads/20200602192719/mcdouble.png",
-        "description": "McDouble to klasyczny burger z dwiema porcjami wołowiny, serem cheddar, cebulą, ogórkiem, sałatą i sosem majonezowym. Wszystko to w chrupiącej bułce z sezamem.",
-        "price": "8.99"
-    },
-    {
-        "id": 4,
-        "name": "McWrap",
-        "category": "Wrap",
-        "image": "https://cdn.mcdonalds.pl/uploads/20221221160642/350367-mcwrap-2022-na-www-1090x664px-8-mcwrap-bekon-deluxe.png",
-        "description": "McWrap to pyszny i pożywny posiłek, który możesz zjeść w domu, w pracy lub w drodze. McWrap to chrupiąca tortilla z sałatą, pomidorem, ogórkiem, cebulą, serem cheddar i sosem majonezowym. W środku znajdziesz porcję kurczaka lub wołowiny.",
+        "name": "Donut czekoladowy",
+        "category": "Donut",
+        "image": "https://assets.stickpng.com/images/584fcc806a5ae41a83ddee8c.png",
+        "description": "Bardzo smaczny donut z czekoladą",
         "price": "7.95"
     },
     {
+        "id": 2,
+        "name": "Donut truskawkowy",
+        "category": "Donut",
+        "image": "https://cdn.pixabay.com/photo/2022/02/16/16/49/dessert-7017159_1280.png",        
+        "description": "Bardzo smaczny donut z truskawkami",
+        "price": "6.95"
+    },
+    {
+        "id": 3,
+        "name": "Donut waniliowy",
+        "category": "Donut",
+        "image": "https://static.vecteezy.com/system/resources/previews/010/286/267/non_2x/white-donut-3d-illustration-png.png",
+        "description": "Waniliowa słodycz",
+        "price": "8.95"
+    },
+    {
+        "id": 4,
+        "name": "Donut karmelowy",
+        "category": "Donut",
+        "image": "https://static.vecteezy.com/system/resources/previews/010/286/218/original/caramel-donut-3d-illustration-png.png",
+        "description": "Karmelowy smak",
+        "price": "9.95"
+    },
+    {
         "id": 5,
-        "name": "BigMac",
-        "category": "Burger",
-        "image": "https://assets.stickpng.com/images/5882482de81acb96424ffaac.png",
-        "description": "BigMac to klasyczny burger z dwiema porcjami wołowiny, serem cheddar, cebulą, ogórkiem, sałatą i sosem majonezowym. Wszystko to w chrupiącej bułce z sezamem.",
-        "price": "10.99"
+        "name": "Pączek z malinami",
+        "category": "Pączek",
+        "image": "https://cdn.pixabay.com/photo/2017/07/27/07/16/donut-2544153_1280.png",
+        "description": "Malinowy smak",
+        "price": "10.95"
+    },
+    {
+        "id": 6,
+        "name": "Pączek orzechowy",
+        "category": "Pączek",
+        "image": "https://fc-mwj.pl/app/uploads/2019/02/zestawienie_krem_orzechowy.png",
+        "description": "Jagodowy smak",
+        "price": "11.95"
+    },
+    {
+        "id": 7,
+        "name": "Espresso",
+        "category": "Kawa",
+        "image": "https://cdn2.iconfinder.com/data/icons/italian-espresso/512/espresso.png",
+        "description": "Kawa espresso",
+        "price": "12.95"
+    },
+    {
+        "id": 8,
+        "name": "Cappuccino",
+        "category": "Kawa",
+        "image": "https://pngimg.com/d/cappuccino_PNG26.png",
+        "description": "Kawa cappuccino",
+        "price": "13.95"
+    },
+    {
+        "id": 9,
+        "name": "Latte macchiato",
+        "category": "Kawa",
+        "image": "https://slojo.co.za/wp-content/uploads/2020/05/Caramellatte.png",
+        "description": "Kawa latte macchiato",
+        "price": "14.95"
+    },
+    {
+        "id": 10,
+        "name": "Lody waniliowe",
+        "category": "Lody",
+        "image": "https://cdn.pixabay.com/photo/2017/09/19/00/04/ice-2763644_1280.png",
+        "description": "Lody waniliowe",
+        "price": "15.95"
+    },
+    {
+        "id": 11,
+        "name": "Lody czekoladowe",
+        "category": "Lody",
+        "image": "https://www.freeiconspng.com/uploads/ice-cream-png-transparent-6.png",
+        "description": "Lody czekoladowe",
+        "price": "16.95"
+    },
+    {
+        "id": 12,
+        "name": "Lody truskawkowe",
+        "category": "Lody",
+        "image": "https://cdn.pixabay.com/photo/2017/09/19/00/04/ice-2763644_1280.png",
+        "description": "Lody truskawkowe",
+        "price": "17.95"
+    },
+    {
+        "id": 13,
+        "name": "Yerba mate z miętą",
+        "category": "Yerba mate",
+        "image": "",
+        "description": "Yerba mate z miętą",
+        "price": "18.95" 
+    },
+    {
+        "id": 14,
+        "name": "Yerba mate z cytryną",
+        "category": "Yerba mate",
+        "image": "",
+        "description": "Yerba mate z cytryną",
+        "price": "19.95"
+    },
+    {
+        "id": 15,
+        "name": "Yerba mate z truskawką",
+        "category": "Yerba mate",
+        "image": "",
+        "description": "Yerba mate z truskawką",
+        "price": "20.95"
+    },
+    {
+        "id": 16,
+        "name": "Herbata zielona",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata zielona",
+        "price": "21.95"
+    },
+    {
+        "id": 17,
+        "name": "Herbata czarna",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czarna",
+        "price": "22.95"
+    },
+    {
+        "id": 18,
+        "name": "Herbata czerwona",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czerwona",
+        "price": "23.95"
+    },
+    {
+        "id": 19,
+        "name": "Herbata biała",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata biała",
+        "price": "24.95"
+    },
+    {
+        "id": 20,
+        "name": "Herbata zielona z miętą",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata zielona z miętą",
+        "price": "25.95"
+    },
+    {
+        "id": 21,
+        "name": "Herbata zielona z cytryną",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata zielona z cytryną",
+        "price": "26.95"
+    },
+    {
+        "id": 22,
+        "name": "Herbata zielona z truskawką",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata zielona z truskawką",
+        "price": "27.95"
+    },
+    {
+        "id": 23,
+        "name": "Herbata czarna z miętą",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czarna z miętą",
+        "price": "28.95"
+    },
+    {
+        "id": 24,
+        "name": "Herbata czarna z cytryną",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czarna z cytryną",
+        "price": "29.95"
+    },
+    {
+        "id": 25,
+        "name": "Herbata czarna z truskawką",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czarna z truskawką",
+        "price": "30.95"
+    },
+    {
+        "id": 26,
+        "name": "Herbata czerwona z miętą",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czerwona z miętą",
+        "price": "31.95"
+    },
+    {
+        "id": 27,
+        "name": "Herbata czerwona z cytryną",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czerwona z cytryną",
+        "price": "32.95"
+    },
+    {
+        "id": 28,
+        "name": "Herbata czerwona z truskawką",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata czerwona z truskawką",
+        "price": "33.95"
+    },
+    {
+        "id": 29,
+        "name": "Herbata biała z miętą",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata biała z miętą",
+        "price": "34.95"
+    },
+    {
+        "id": 30,
+        "name": "Herbata biała z cytryną",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata biała z cytryną",
+        "price": "35.95"
+    },
+    {
+        "id": 31,
+        "name": "Herbata biała z truskawką",
+        "category": "Herbata",
+        "image": "",
+        "description": "Herbata biała z truskawką",
+        "price": "36.95"
+    },
+    {
+        "id": 32,
+        "name": "Americano",
+        "category": "Kawa",
+        "image": "",
+        "description": "Kawa czarna",
+        "price": "17.95"
+    },
+    {
+        "id": 33,
+        "name": "Flat white",
+        "category": "Kawa",
+        "image": "",
+        "description": "Kawa z mlekiem",
+        "price": "18.95"
     }
-
-
 ]

@@ -1,3 +1,9 @@
+body{
+    
+  background-image: url('https://freepngimg.com/thumb/coffee/61917-coffee-espresso-bean-beans-images-cafe-transparent.png');
+  background-repeat: repeat-x;
+  background-position: top left;
+}
 #time-popup {
     position: fixed;
     top: 50%;
@@ -58,6 +64,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
+  background-color: #fff;
 
   &:hover {
     background-color: #f5f5f5;
@@ -83,7 +90,10 @@
   
 }
 button {
-    background-color: #4caf50;
+    // background-color: #4caf50;
+    
+  background-color: #8B4513;
+
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -91,7 +101,8 @@ button {
     cursor: pointer;
 
     &:hover {
-      background-color: #45a049;
+    //   background-color: #45a049;
+        background-color: #A0522D;
     }
   }
 
@@ -161,6 +172,49 @@ button {
       &.active {
         font-weight: bold;
       }
+    }
+  }
+  
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .site-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    min-height: 200px;
+    // background-color: #f7f7f7;
+    //little brownier
+    background-color: #e5ddd8;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  
+    &:hover {
+      background-color: #e63b00;
     }
   }
   

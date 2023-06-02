@@ -22,8 +22,14 @@ const Page = () => {
 //   };
 
   return (
-    <div>
-        <button onClick={() => window.location.href='/products' }> Złóż zamówienie </button>
+    
+    <div className="container">
+      <div className="site-box">
+        <h1 className="title">MacDonut</h1>
+        <button className="button" onClick={() => (window.location.href = '/products')}>
+          Złóż zamówienie
+        </button>
+      </div>
     </div>
   );
 }

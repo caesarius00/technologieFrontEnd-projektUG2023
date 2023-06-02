@@ -13,21 +13,33 @@ const Cart = () => {
 
 
   return ( 
-    <div>
+
+    
+  //   <div className="container">
+  //   <div className="site-box">
+  //     <h1 className="title">MacDonut</h1>
+  //     <button className="button" onClick={() => (window.location.href = '/products')}>
+  //       Złóż zamówienie
+  //     </button>
+  //   </div>
+  // </div>
+
+    <div className="container">
+    <div className="site-box">
  {console.log(cartItems)} 
       {cartItems.length === 0 ? (
         <div>
-        <h2>Koszyk</h2>
+        <h1 className='title'>Koszyk</h1>
           <p>Brak produktów w koszyku!</p>
-          <Link to="/products"><button>Złóż zamówienie tu</button></Link>
+          <Link to="/products"><button className='button'>Złóż zamówienie tu</button></Link>
         </div>
       ) : (
         <div>
         
         <Link to="/products"><button>Wróć do składania zamówienia</button></Link><br />
-      <h2>Koszyk ({cartItems.length})</h2>
+      <h1 className='title'>Koszyk ({cartItems.length})</h1>
       <p>Suma: {countTotal} zł</p>
-        <button onClick={emptyCart}>Wyczyść koszyk</button>
+        <button  className='button' onClick={emptyCart}>Wyczyść koszyk</button>
       </div>
       )}
 
@@ -40,6 +52,7 @@ const Cart = () => {
         ))}
       </ul>
     </div>
+  </div>
   );
 };
 
