@@ -1,5 +1,6 @@
 // tailwind.config.js
 module.exports = {
+  content: ["./src/components/OrderSubmit.js"],
   theme: {
     extend: {
       fontSize: {

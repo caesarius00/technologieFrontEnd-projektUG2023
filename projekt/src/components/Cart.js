@@ -63,9 +63,11 @@ const Cart = () => {
   </div>
   
   <div className="right-button-container">
-        <button className='button-yes' onClick={() => (window.location.href='/')}>
+    <Link to="/pickup">
+        <button className='button-yes'>
           Zatwierdź zamówienie
         </button>
+      </Link>
       </div>
   </div>
   );
