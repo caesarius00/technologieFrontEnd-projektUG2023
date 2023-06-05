@@ -62,6 +62,9 @@ const Cart = () => {
     </div>
   </div>
   
+  {cartItems.length === 0 ? (
+    <div></div>
+  ) : (
   <div className="right-button-container">
     <Link to="/pickup">
         <button className='button-yes'>
@@ -69,6 +72,7 @@ const Cart = () => {
         </button>
       </Link>
       </div>
+  )}
   </div>
   );
 };

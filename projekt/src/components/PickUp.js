@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {Link } from 'react-router-dom';
+import { PickUpContext } from '../contexts/PickUpContext';
 
 const PickUp = () => {
+  const { setPickUp } = useContext(PickUpContext);
+
   const initialValues = {
     deliveryType: '',
     tableNumber: '',
@@ -18,6 +21,9 @@ const PickUp = () => {
   const handleSubmit = (values) => {
     console.log('Form submitted:', values);
     // Dodaj tutaj kod obsługujący przesłanie formularza
+    setPickUp((prevValues) => ({ ...prevValues, ...values }));
+    window.location.href = '/payment';
+
   };
 
   const validate = (values) => {
@@ -54,6 +60,13 @@ const PickUp = () => {
 
   return (
     <div className='container'>
+      <div className="left-button-container">
+        <Link to='/products'>
+        <button className='button-no'>
+          Wróć
+        </button>
+        </Link>
+      </div>
       <div className='site-box'>
         <h1>Formularz zamówienia</h1>
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validate}>
@@ -153,7 +166,10 @@ const PickUp = () => {
 
               {/* <button type='submit' onClick={console.log.initialValues}>Zamów</button> */}
               
-                <Link class="right-button-container" to="/payment"> <button type='submit'> Zamów </button></Link>
+                {/* <Link class="right-button-container" to="/payment"> <button type='submit'> Zamów </button></Link> */}
+                <div className="right-button-container">
+                  <button type='submit'> Zamów </button>
+                </div>
             </Form>
           )}
         </Formik>
