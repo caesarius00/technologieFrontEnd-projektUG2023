@@ -18,7 +18,7 @@ function DarkMode() {
   };
 
   return (
-    <div>
+    <div className='right-bottom-button-container'>
       <button onClick={toggleBackground}>
         {isWhite ? 'Dark mode' : 'Light mode'}
       </button>

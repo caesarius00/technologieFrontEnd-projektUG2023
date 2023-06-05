@@ -26,14 +26,21 @@ body{
       margin-bottom: 20px;
     }
   
-    button {
+    // button {
+    //   padding: 10px 20px;
+    //   background-color: #333;
+    //   color: white;
+    //   border: none;
+    //   border-radius: 5px;
+    //   font-size: 16px;
+    //   cursor: pointer;
+    // }
+
+    button{
+      //center horizontally
+      margin-left: 50%;
+      transform: translate(-50%, 0%);
       padding: 10px 20px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
     }
   }
   
@@ -120,10 +127,9 @@ button {
     top: 10%;
     font-size: 20px;
     padding: 20px;
-    
   }  
 
-  #order-summary-button{
+  .right-button-container{
   position: fixed;
   right: 20px;
   bottom: 50%;
@@ -136,6 +142,34 @@ button {
 
   }
 }
+
+  .left-button-container{
+    position: fixed;
+    left: 20px;
+    bottom: 50%;
+    transform: translateY(50%);
+    z-index: 9999;
+  
+    button{ 
+      font-size: 24px;
+      padding: 20px 40px;
+  
+    }
+  }
+
+  .right-bottom-button-container{
+    position: fixed;
+    right: 20px;
+    bottom: 10%;
+    transform: translateY(50%);
+    z-index: 9999;
+  
+    button{ 
+      font-size: 24px;
+      padding: 20px 40px;
+  
+    }
+  }
 
 .categories {
     position: fixed;
@@ -201,9 +235,11 @@ button {
     font-size: 2rem;
     color: #333;
     margin-bottom: 1rem;
+    //center
+    text-align: center;
   }
   
-  .button {
+  .button-no {
     padding: 1rem 2rem;
     font-size: 1.2rem;
     background-color: #ff4500;
@@ -215,6 +251,21 @@ button {
   
     &:hover {
       background-color: #e63b00;
+    }
+  }
+
+  .button-yes{
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #8B4513;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  
+    &:hover {
+      background-color: #A0522D;
     }
   }
   

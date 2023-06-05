@@ -24,6 +24,13 @@ const Cart = () => {
   //   </div>
   // </div>
 
+  <div>
+    
+    <div className="left-button-container">
+        <button className='button-no' onClick={() => (window.location.href='/')}>
+          Anuluj zamówienie
+        </button>
+      </div>
     <div className="container">
     <div className="site-box">
  {console.log(cartItems)} 
@@ -31,15 +38,16 @@ const Cart = () => {
         <div>
         <h1 className='title'>Koszyk</h1>
           <p>Brak produktów w koszyku!</p>
-          <Link to="/products"><button className='button'>Złóż zamówienie tu</button></Link>
+          <Link to="/products"><button className='button-yes'>Złóż zamówienie tu</button></Link>
         </div>
       ) : (
         <div>
-        
+        <br/>
         <Link to="/products"><button>Wróć do składania zamówienia</button></Link><br />
       <h1 className='title'>Koszyk ({cartItems.length})</h1>
       <p>Suma: {countTotal} zł</p>
-        <button  className='button' onClick={emptyCart}>Wyczyść koszyk</button>
+        {/* <button  className='button' onClick={emptyCart}>Wyczyść koszyk</button> */}
+        
       </div>
       )}
 
@@ -52,6 +60,13 @@ const Cart = () => {
         ))}
       </ul>
     </div>
+  </div>
+  
+  <div className="right-button-container">
+        <button className='button-yes' onClick={() => (window.location.href='/')}>
+          Zatwierdź zamówienie
+        </button>
+      </div>
   </div>
   );
 };

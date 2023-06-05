@@ -92,7 +92,7 @@ const timerRef = useRef(null);
                 <div id="time-popup" class="modal">
                 <h1>Uwaga!</h1>
                 <p>Twoje zamówienie zostanie anulowane za {remainingTime} sekund.</p>
-                <button onClick={() => handleButtonClick() }>JESTEM</button>  
+                <button className="button-yes" onClick={() => handleButtonClick() }>JESTEM</button>  
               </div>
               
               <div class="overlay"></div>
