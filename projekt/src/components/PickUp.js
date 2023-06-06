@@ -1,15 +1,16 @@
 import React, {useContext} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {Link } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import { PickUpContext } from '../contexts/PickUpContext';
+import * as yup from 'yup';
 
 const PickUp = () => {
   const { setPickUp } = useContext(PickUpContext);
+  const navigate = useNavigate();
 
   const initialValues = {
     deliveryType: '',
     tableNumber: '',
-    address: '',
     postalCode: '',
     city: '',
     street: '',
@@ -22,41 +23,43 @@ const PickUp = () => {
     console.log('Form submitted:', values);
     // Dodaj tutaj kod obsługujący przesłanie formularza
     setPickUp((prevValues) => ({ ...prevValues, ...values }));
-    window.location.href = '/payment';
+    // window.location.href = '/payment';
+    navigate('/payment');
+
 
   };
 
-  const validate = (values) => {
-    const errors = {};
-
-    if (values.deliveryType === '') {
-      errors.deliveryType = 'Wybierz typ dostawy';
-    }
-
-    if (values.deliveryType === 'stolik' && values.tableNumber === '') {
-      errors.tableNumber = 'Podaj numer stolika';
-    }
-
-    if (values.deliveryType === 'dostawa') {
-      if (values.postalCode === '') {
-        errors.postalCode = 'Podaj kod pocztowy';
-      }
-      if (values.city === '') {
-        errors.city = 'Podaj miasto';
-      }
-      if (values.street === '') {
-        errors.street = 'Podaj ulicę';
-      }
-      if (values.houseNumber === '') {
-        errors.houseNumber = 'Podaj numer domu';
-      }
-      if (values.phoneNumber === '') {
-        errors.phoneNumber = 'Podaj numer telefonu';
-      }
-    }
-
-    return errors;
-  };
+  const validationSchema = yup.object({
+    deliveryType: yup.string().required('Wybierz sposób dostawy'),
+    tableNumber: yup
+      .number()
+      .typeError('Numer stolika musi być liczbą')
+      .min(1, 'Numer stolika musi być większy od 0')
+      .max(100, 'Numer stolika musi być mniejszy od 100'),
+    postalCode: yup
+      .string()
+      .matches(/^[0-9]{2}-[0-9]{3}$/, 'Kod pocztowy musi być w formacie XX-XXX')
+      .required('Wprowadź kod pocztowy'),
+    city: yup
+      .string()
+      .matches(/^[a-zA-Z]+$/, 'Miasto musi składać się z liter')
+      .required('Wprowadź miasto'),
+    street: yup
+      .string()
+      .matches(/^[a-zA-Z]+$/, 'Ulica musi składać się z liter')
+      .required('Wprowadź ulicę'),
+    houseNumber: yup
+      .string()
+      .matches(/^[0-9]+$/, 'Numer domu musi składać się z cyfr')
+      .required('Wprowadź numer domu'),
+    apartmentNumber: yup
+      .string()
+      .matches(/^[0-9]+$/, 'Numer mieszkania musi składać się z cyfr'),
+    phoneNumber: yup
+      .string()
+      .matches(/^[0-9]{9}$/, 'Numer telefonu musi składać się z 9 cyfr')
+      .required('Wprowadź numer telefonu'),
+  });
 
   return (
     <div className='container'>
@@ -69,7 +72,7 @@ const PickUp = () => {
       </div>
       <div className='site-box'>
         <h1>Formularz zamówienia</h1>
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validate}>
+        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
           {({ values, handleChange }) => (
             <Form>
               <div className='radio-group'>

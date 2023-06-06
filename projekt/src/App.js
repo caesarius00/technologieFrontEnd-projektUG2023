@@ -5,7 +5,7 @@ import { CartProvider } from './contexts/CartContext';
 import { PickUpProvider } from './contexts/PickUpContext';
 import MainPage from './components/MainPage';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import DarkMode from './components/DarkMode';
+import {DarkMode, DarkModeProvider} from './components/DarkMode';
 import Cart from './components/Cart';
 import ProductsList from './components/ProductsList';
 import ProductsPage from './components/ProductsPage';
@@ -61,6 +61,7 @@ const NotFound = () => (
 
 function App() {
   return (
+    <DarkModeProvider>
   <PickUpProvider>
     <CartProvider>
       <ProductProvider>
@@ -79,6 +80,7 @@ function App() {
       </ProductProvider>
     </CartProvider>
   </PickUpProvider>
+</DarkModeProvider>
   );
 }
 

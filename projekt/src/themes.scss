@@ -1,0 +1,32 @@
+@import 'colors.scss';
+
+.dark-mode {
+    @include darkMode;
+
+    background-image: none;
+  
+    button {
+      background-color: $button-background-dark;
+      color: $button-text-dark;
+    }
+
+    h1{
+        color: $text-dark;
+    }
+    
+    .site-box {
+        background-color: #333;
+        color: $text-dark;
+        border: 1px solid #170000;
+        /* Dodaj inne właściwości stylu */
+      }
+
+    div.categories, div.product-item{
+        color: $text-dark;
+        background-color: #333;
+        li{
+            color: $text-dark;
+        }
+    }
+  }
+  

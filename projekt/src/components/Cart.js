@@ -57,6 +57,7 @@ const Cart = () => {
             {item.name} - {item.price} zł
             <button onClick={() => removeItem(number)}>Usuń</button>
           </li>
+          
         ))}
       </ul>
     </div>

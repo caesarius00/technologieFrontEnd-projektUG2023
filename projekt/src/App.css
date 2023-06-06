@@ -40,5 +40,12 @@
     border-radius: 4px;
   }
 
-  
+  .error-message {
+    background-color: #fde2e2;
+    border-color: #f56565;
+    color: #c53030;
+    padding: 0.5rem 1rem;
+    border-width: 1px;
+    border-radius: 0.25rem;
+  }
   
