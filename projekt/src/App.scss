@@ -1,8 +1,11 @@
+@import 'colors.scss';
+
 body{
     
   background-image: url('https://freepngimg.com/thumb/coffee/61917-coffee-espresso-bean-beans-images-cafe-transparent.png');
   background-repeat: repeat-x;
   background-position: top left;
+  @include theme($dark: false);
 }
 #time-popup {
     position: fixed;
@@ -129,47 +132,19 @@ button {
     padding: 20px;
   }  
 
-  .right-button-container{
-  position: fixed;
-  right: 20px;
-  bottom: 50%;
-  transform: translateY(50%);
-  z-index: 9999;
+//   .right-button-container{
+//   position: fixed;
+//   right: 20px;
+//   bottom: 50%;
+//   transform: translateY(50%);
+//   z-index: 9999;
 
-  button{ 
-    font-size: 24px;
-    padding: 20px 40px;
+//   button{ 
+//     font-size: 24px;
+//     padding: 20px 40px;
 
-  }
-}
-
-  .left-button-container{
-    position: fixed;
-    left: 20px;
-    bottom: 50%;
-    transform: translateY(50%);
-    z-index: 9999;
-  
-    button{ 
-      font-size: 24px;
-      padding: 20px 40px;
-  
-    }
-  }
-
-  .right-bottom-button-container{
-    position: fixed;
-    right: 20px;
-    bottom: 10%;
-    transform: translateY(50%);
-    z-index: 9999;
-  
-    button{ 
-      font-size: 24px;
-      padding: 20px 40px;
-  
-    }
-  }
+//   }
+// }
 
 .categories {
     position: fixed;
@@ -239,33 +214,113 @@ button {
     text-align: center;
   }
   
-  .button-no {
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    background-color: #ff4500;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+  // .button-no {
+  //   padding: 1rem 2rem;
+  //   font-size: 1.2rem;
+  //   color: #fff;
+  //   border: none;
+  //   border-radius: 4px;
+  //   cursor: pointer;
+  //   transition: background-color 0.3s ease-in-out;
+  //   background-color: #ff4500;
   
-    &:hover {
-      background-color: #e63b00;
+  //   &:hover {
+  //     background-color: #e63b00;
+  //   }
+  // }
+
+  // .button-yes{
+  //   padding: 1rem 2rem;
+  //   font-size: 1.2rem;
+  //   color: #fff;
+  //   border: none;
+  //   border-radius: 4px;
+  //   cursor: pointer;
+  //   transition: background-color 0.3s ease-in-out;
+  //   background-color: #8B4513;
+  
+  //   &:hover {
+  //     background-color: #A0522D;
+  //   }
+  // }
+  
+  $directions: left, right;
+
+@for $dir from 1 through length($directions) {
+  $current-dir: nth($directions, $dir);
+  
+  .#{$current-dir}-button-container {
+    position: fixed;
+    #{$current-dir}: 20px;
+    bottom: 50%;
+    transform: translateY(50%);
+    z-index: 9999;
+
+    button {
+      font-size: 24px;
+      padding: 20px 40px;
+    }
+  }
+}
+
+
+  // .left-button-container{
+  //   position: fixed;
+  //   left: 20px;
+  //   bottom: 50%;
+  //   transform: translateY(50%);
+  //   z-index: 9999;
+  
+  //   button{ 
+  //     font-size: 24px;
+  //     padding: 20px 40px;
+  
+  //   }
+  // }
+
+  .right-bottom-button-container{
+    position: fixed;
+    right: 20px;
+    bottom: 10%;
+    transform: translateY(50%);
+    z-index: 9999;
+  
+    button{ 
+      font-size: 24px;
+      padding: 20px 40px;
+  
     }
   }
 
-  .button-yes{
+
+$confirmation: true; // Przykładowy warunek
+
+.button {
+  // Wspólne style przycisków
     padding: 1rem 2rem;
     font-size: 1.2rem;
-    background-color: #8B4513;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+
+  
+    &-no {      
+    background-color: #ff4500;
+  
+      &:hover {
+        background-color: #e63b00;
+      }
+    }
+    
+    &-yes {
+      // background-color: green;
+    background-color: #A0522D;
+      
   
     &:hover {
-      background-color: #A0522D;
+    background-color: #997511;
+    }
     }
   }
-  

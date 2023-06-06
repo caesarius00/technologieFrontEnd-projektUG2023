@@ -1,7 +1,7 @@
 @import 'colors.scss';
 
 .dark-mode {
-    @include darkMode;
+    @include theme($dark: true);
 
     background-image: none;
   

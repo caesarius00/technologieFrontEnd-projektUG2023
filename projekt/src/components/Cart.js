@@ -38,7 +38,7 @@ const Cart = () => {
         <div>
         <h1 className='title'>Koszyk</h1>
           <p>Brak produktów w koszyku!</p>
-          <Link to="/products"><button className='button-yes'>Złóż zamówienie tu</button></Link>
+          <Link to="/products"><button className='button button-yes'>Złóż zamówienie tu</button></Link>
         </div>
       ) : (
         <div>

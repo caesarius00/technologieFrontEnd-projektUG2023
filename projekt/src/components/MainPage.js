@@ -26,7 +26,7 @@ const Page = () => {
     <div className="container">
       <div className="site-box">
         <h1 className="title">MacDonut</h1>
-        <button className="button-yes" onClick={() => (window.location.href = '/products')}>
+        <button className="button button-yes" onClick={() => (window.location.href = '/products')}>
           Złóż zamówienie
         </button>
       </div>

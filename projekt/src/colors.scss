@@ -9,13 +9,14 @@ $text-dark: white;
 $button-background-dark: rgb(52, 2, 2);
 $button-text-dark: rgb(197, 197, 197);
 
-@mixin darkMode {
-    background-color: $background-dark;
-    color: $text-dark;
-  }
-  
-  @mixin lightMode {
-    background-color: $background-light;
-    color: $text-light;
-  }
+@mixin theme ($dark: false) {
+
+    @if $dark {
+        background-color: $background-dark;
+        color: $text-dark;
+    } @else {
+        background-color: $background-light;
+        color: $text-light;
+    }
+}
   

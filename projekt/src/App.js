@@ -11,6 +11,7 @@ import ProductsList from './components/ProductsList';
 import ProductsPage from './components/ProductsPage';
 import PickUp from './components/PickUp';
 import Payment from './components/Payment';
+import Success from './components/Success';
 
 const Home = () => (
   <div>
@@ -47,6 +48,13 @@ const PaymentSite = () => (
   </div>
 );
 
+const SuccessSite = () => (
+  <div>
+    <DarkMode />
+    <Success />
+  </div>
+);
+
 const NotFound = () => (
 <div className="container">
 <div className="site-box">
@@ -74,6 +82,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/pickup" element={<PickUpSite />} />
             <Route path="/payment" element={<PaymentSite />} />
+            <Route path="/success" element={<SuccessSite />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

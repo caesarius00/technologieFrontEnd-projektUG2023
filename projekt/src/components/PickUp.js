@@ -1,15 +1,16 @@
-import React, {useContext} from 'react';
+import React, { useContext, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PickUpContext } from '../contexts/PickUpContext';
 import * as yup from 'yup';
 
 const PickUp = () => {
-  const { setPickUp } = useContext(PickUpContext);
+  const { setPickUp, clearPickUp } = useContext(PickUpContext);
   const navigate = useNavigate();
 
+  const [deliveryType, setDeliveryType] = useState('');
+
   const initialValues = {
-    deliveryType: '',
     tableNumber: '',
     postalCode: '',
     city: '',
@@ -19,23 +20,32 @@ const PickUp = () => {
     phoneNumber: '',
   };
 
-  const handleSubmit = (values) => {
-    console.log('Form submitted:', values);
-    // Dodaj tutaj kod obsługujący przesłanie formularza
-    setPickUp((prevValues) => ({ ...prevValues, ...values }));
-    // window.location.href = '/payment';
-    navigate('/payment');
-
-
+  const handleDeliveryTypeChange = (e) => {
+    setDeliveryType(e.target.value);
   };
 
-  const validationSchema = yup.object({
-    deliveryType: yup.string().required('Wybierz sposób dostawy'),
+  const handlePickUpSubmit = (values) => {
+    console.log('Form submitted (PickUp):', values);
+    setPickUp((prevValues) => ({ ...prevValues, ...values }));
+    navigate('/payment');
+  };
+
+  const handleDeliverySubmit = (values) => {
+    console.log('Form submitted (Delivery):', values);
+    setPickUp((prevValues) => ({ ...prevValues, ...values }));
+    navigate('/payment');
+  };
+
+  const pickUpValidationSchema = yup.object({
     tableNumber: yup
       .number()
       .typeError('Numer stolika musi być liczbą')
       .min(1, 'Numer stolika musi być większy od 0')
-      .max(100, 'Numer stolika musi być mniejszy od 100'),
+      .max(100, 'Numer stolika musi być mniejszy od 100')
+      .required('Wprowadź numer stolika'),
+  });
+
+  const deliveryValidationSchema = yup.object({
     postalCode: yup
       .string()
       .matches(/^[0-9]{2}-[0-9]{3}$/, 'Kod pocztowy musi być w formacie XX-XXX')
@@ -63,53 +73,53 @@ const PickUp = () => {
 
   return (
     <div className='container'>
-      <div className="left-button-container">
+      <div className='left-button-container'>
         <Link to='/products'>
-        <button className='button-no'>
-          Wróć
-        </button>
+          <button className='button-no' onClick={clearPickUp}>Wróć</button>
         </Link>
       </div>
       <div className='site-box'>
         <h1>Formularz zamówienia</h1>
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
-          {({ values, handleChange }) => (
-            <Form>
-              <div className='radio-group'>
-                <label className='radio-label'>
-                  <Field
-                    type='radio'
-                    name='deliveryType'
-                    value='dostawa'
-                    className='radio-input'
-                    onChange={handleChange}
-                  />
-                  Dostawa
-                </label>
-                <label className='radio-label'>
-                  <Field
-                    type='radio'
-                    name='deliveryType'
-                    value='stolik'
-                    className='radio-input'
-                    onChange={handleChange}
-                  />
-                  Do stolika
-                </label>
-                <label className='radio-label'>
-                  <Field
-                    type='radio'
-                    name='deliveryType'
-                    value='odbior'
-                    className='radio-input'
-                    onChange={handleChange}
-                  />
-                  Odbiór osobisty
-                </label>
-              </div>
-              <br/>
-
-              {values.deliveryType === 'stolik' && (
+        <div className='radio-group'>
+          <label className='radio-label'>
+            <input
+              type='radio'
+              name='deliveryType'
+              value='dostawa'
+              className='radio-input'
+              checked={deliveryType === 'dostawa'}
+              onChange={handleDeliveryTypeChange}
+            />
+            Dostawa
+          </label>
+          <label className='radio-label'>
+            <input
+              type='radio'
+              name='deliveryType'
+              value='stolik'
+              className='radio-input'
+              checked={deliveryType === 'stolik'}
+              onChange={handleDeliveryTypeChange}
+            />
+            Do stolika
+          </label>
+          <label className='radio-label'>
+            <input
+              type='radio'
+              name='deliveryType'
+              value='odbior'
+              className='radio-input'
+              checked={deliveryType === 'odbior'}
+              onChange={handleDeliveryTypeChange}
+            />
+            Odbiór osobisty
+          </label>
+        </div>
+        <br />
+        {deliveryType === 'stolik' && (
+          <Formik initialValues={initialValues} onSubmit={handlePickUpSubmit} validationSchema={pickUpValidationSchema}>
+            {({ values, handleChange }) => (
+              <Form>
                 <div className='spread'>
                   <div className='form-row'>
                     <label className='form-label'>
@@ -119,9 +129,17 @@ const PickUp = () => {
                     </label>
                   </div>
                 </div>
-              )}
-
-              {values.deliveryType === 'dostawa' && (
+                <div className='right-button-container'>
+                  <button type='submit'>Zamów</button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        )}
+        {deliveryType === 'dostawa' && (
+          <Formik initialValues={initialValues} onSubmit={handleDeliverySubmit} validationSchema={deliveryValidationSchema}>
+            {({ values, handleChange }) => (
+              <Form>
                 <div className='spread'>
                   <div className='form-row'>
                     <label className='form-label'>
@@ -165,17 +183,18 @@ const PickUp = () => {
                     </label>
                   </div>
                 </div>
-              )}
-
-              {/* <button type='submit' onClick={console.log.initialValues}>Zamów</button> */}
-              
-                {/* <Link class="right-button-container" to="/payment"> <button type='submit'> Zamów </button></Link> */}
-                <div className="right-button-container">
-                  <button type='submit'> Zamów </button>
+                <div className='right-button-container'>
+                  <button type='submit'>Zamów</button>
                 </div>
-            </Form>
-          )}
-        </Formik>
+              </Form>
+            )}
+          </Formik>
+        )}
+        {deliveryType === 'odbior' && (
+          <div className='right-button-container'>
+            <button type='button' onClick={handleDeliverySubmit}>Zamów</button>
+          </div>
+        )}
       </div>
     </div>
   );
