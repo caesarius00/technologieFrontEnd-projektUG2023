@@ -1,15 +1,13 @@
 import React, { useContext, useMemo } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import { Link } from 'react-router-dom';
+import TimeCounting from './TimeCounting';
 
 const Cart = () => {
-  const { cartItems, emptyCart, removeItem} = useContext(CartContext);
+  const { cartItems, emptyCart, removeItem, countTotal} = useContext(CartContext);
 
   // use useMemo
-  const countTotal = useMemo(() => {
-    const total = cartItems.reduce((sum, item) => sum + parseFloat(item.price), 0);
-    return total.toFixed(2);
-  }, [cartItems]);
+  
 
 
   return ( 
@@ -25,6 +23,7 @@ const Cart = () => {
   // </div>
 
   <div>
+    <TimeCounting />
     
     <div className="left-button-container">
         <button className='button-no' onClick={() => (window.location.href='/')}>

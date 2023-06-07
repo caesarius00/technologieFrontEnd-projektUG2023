@@ -2,15 +2,20 @@
 module.exports = {
   content: ["./src/components/OrderSubmit.js"],
   theme: {
-    extend: {
-      fontSize: {
-        big: '1.25rem', // Define a custom font size for 'big' class
-      },
-      spacing: {
-        big: '1.5rem', // Define a custom spacing for 'big' class
+    // ...
+    typography: {
+      'receipt': {
+        css: {
+          ul: {
+            fontFamily: 'VT323',
+            fontSize: '1.5rem',
+          },
+        },
       },
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

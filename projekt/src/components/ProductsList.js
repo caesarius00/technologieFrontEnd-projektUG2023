@@ -81,7 +81,7 @@ const ProductsList = () => {
       <div className="product-container" >
   {filteredProducts.map((product, number) => (
     <div key={product.id} className={isAnimating[number] ? 'bouncing product-item' : 'product-item'}>
-      {product.image === '' ? (
+      {product.image === null ? (
         <img></img>
         ) : ( 
         <img className="product-image" src={product.image} alt={product.name}  />

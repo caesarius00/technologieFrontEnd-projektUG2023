@@ -254,7 +254,7 @@ button {
     #{$current-dir}: 20px;
     bottom: 50%;
     transform: translateY(50%);
-    z-index: 9999;
+    z-index: 9997;
 
     button {
       font-size: 24px;
@@ -283,7 +283,7 @@ button {
     right: 20px;
     bottom: 10%;
     transform: translateY(50%);
-    z-index: 9999;
+    z-index: 9997;
   
     button{ 
       font-size: 24px;
@@ -324,3 +324,28 @@ $confirmation: true; // Przykładowy warunek
     }
     }
   }
+
+
+  
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "custom": #58210d,
+    "custom2": #44403e
+
+  )
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.paragonowa-czcionka {
+  font-family: 'VT323', monospace;
+  //make it little bigger
+  font-size: 1.5rem;
+}

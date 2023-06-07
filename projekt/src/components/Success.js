@@ -7,9 +7,11 @@ import html2canvas from "html2canvas";
 import toPdf from "html2pdf.js";
 import useReactToPrint from "react-to-print";
 import jsPDF from "jspdf";
+import 'bootstrap/dist/css/bootstrap.css'
+import TimeCounting from "./TimeCounting";
 
 const Success = () => {
-  const { cartItems, emptyCart, removeItem } = useContext(CartContext);
+  const { cartItems, emptyCart, removeItem, countTotal} = useContext(CartContext);
   const { pickUp, setPickUp } = useContext(PickUpContext);
 
   const componentRef = useRef();
@@ -18,15 +20,17 @@ const Success = () => {
     const input = document.getElementById("print");
     html2canvas(input).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, "PNG", 0, 0);
-        pdf.save("download.pdf");
-
+        const pdf = new jsPDF("p", "mm", "a4");
+        var width = pdf.internal.pageSize.getWidth();
+        var height = pdf.internal.pageSize.getHeight();
+        pdf.addImage(imgData, "JPEG", 0, 0, width, height);
+        pdf.save("receipt.pdf");
     });
   };
   
   return (
     <div>
+        <TimeCounting />
       <div className="left-button-container">
         <button
           className="button-no"
@@ -37,9 +41,6 @@ const Success = () => {
       </div>
       <div className="container">
         <div className="site-box">
-            <button className="button-yes" onClick={handlePrint}>
-                Drukuj paragon
-            </button>
           <h1 className="title">Dziękujemy za zakupy!</h1>
           <h2 className="subtitle">Twoje zamówienie zostało złożone</h2>
           {/* przewidywany czas oczekiwania */}
@@ -57,18 +58,18 @@ const Success = () => {
             </h3>
             <div id="print" ref={componentRef}>
                 <h3 className="subtitle">Zamówione produkty:</h3>
-                <ul>
+                <ul className="paragonowa-czcionka d-flex flex-column">
                     {cartItems.map((item) => (
-                    <li key={item.id}>
-                        {item.name} - {item.price} zł
+                    <li className="text-custom2 w-100 d-flex justify-content-between" key={item.id}>
+                        <span>{item.name}</span> <span>{item.price} zł</span>
                     </li>
                     ))}
-                    Suma: {cartItems.reduce((acc, item) => acc + item.price, 0)} zł
+                    <strong className="text-custom w-90 text-end">Suma: {countTotal} zł</strong>
                 </ul>
             </div>
           <h3 className="subtitle">Szczegóły dostawy:</h3>
           {pickUp.tableNumber ? (
-                <p>Numer stolika: {pickUp.tableNumber}</p>
+                <span>Numer stolika: {pickUp.tableNumber}</span>
                 ) : (
                 pickUp.street ? (
                     <>
@@ -86,14 +87,16 @@ const Success = () => {
                          </p>
                 )
 )}
-
-          <h3 className="subtitle">Szczegóły płatności:</h3>
-          <p>Metoda płatności: {pickUp.paymentMethod}</p>
-          {pickUp.paymentMethod === "karta" && (
-            <>
-              <p>Imię i nazwisko na karcie: {pickUp.cardName}</p>
-            </>
-          )}
+            <p>Metoda płatności: <strong>{pickUp.paymentMethod}</strong></p>
+            {pickUp.paymentMethod === "karta" && (
+                <>
+                <p>Imię i nazwisko na karcie: {pickUp.cardName}</p>
+                </>
+            )}
+            
+            <button className="button-yes" onClick={handlePrint}>
+                Drukuj paragon
+            </button>
         </div>
       </div>
     </div>

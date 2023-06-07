@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { PickUpContext } from "../contexts/PickUpContext";
+import TimeCounting from "./TimeCounting";
 
 const Payment = () => {
   const { pickUp, setPickUp, clearPickUp } = useContext(PickUpContext);
@@ -84,6 +85,7 @@ const Payment = () => {
 
   return (
     <div className="container">
+      <TimeCounting />
       <div className="left-button-container">
         <Link to="/products">
           <button className="button-no" onClick={clearPickUp}>Wróć</button>

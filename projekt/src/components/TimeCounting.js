@@ -88,8 +88,9 @@ const timerRef = useRef(null);
     return (
         <div>
             {isPopupVisible && (
-        <div>         
-                <div id="time-popup" class="modal">
+          <div>         
+                {/* <div id="time-popup" className="modal"> */}
+                <div id="time-popup">
                 <h1>Uwaga!</h1>
                 <p>Twoje zamówienie zostanie anulowane za {remainingTime} sekund.</p>
                 <button className="button-yes" onClick={() => handleButtonClick() }>JESTEM</button>  
@@ -97,8 +98,8 @@ const timerRef = useRef(null);
               
               <div class="overlay"></div>
                     
-        </div>    
-        )}
+          </div>    
+          )}
         </div>
 
     );
